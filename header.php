@@ -40,7 +40,18 @@ $upload_dir = wp_upload_dir();
                         <i class="logo__icon"><img src="<?php echo $upload_dir['url']; ?>/logo.svg" alt=""></i>
                     </a>
                     <div class="company-infor">
-                        <h1 class="title">Công ty tnhh máy công nghiệp polo </h1>
+                        <?php
+                        if(is_home()){
+                            ?>
+                                <h1 class="title">Công ty tnhh máy công nghiệp polo </h1>
+                            <?php
+                        }else{
+                            ?>
+                                <span class="title">Công ty tnhh máy công nghiệp polo </span>
+                            <?php
+                        }
+                        ?>
+                        
                         <p class="des"> nhà phân phối máy nén khí hàng đầu việt nam</p>
 
                     </div>
@@ -55,6 +66,34 @@ $upload_dir = wp_upload_dir();
         <div class="nav">
             <div class="container">
                 <!-- menu desktop-->
+
+            <?php
+            if(has_nav_menu('main_menu')){
+                $args = array(
+                    'menu'                 => '',
+                    'container'            => 'nav',
+                    'container_class'      => 'nav-link',
+                    'container_id'         => '',
+                    'container_aria_label' => '',
+                    'menu_class'           => '',
+                    'menu_id'              => '',
+                    'echo'                 => true,
+                    'fallback_cb'          => 'wp_page_menu',
+                    'before'               => '',
+                    'after'                => '',
+                    'link_before'          => '',
+                    'link_after'           => '',
+                    'items_wrap'           => '<ul>%3$s<hr/></ul>',//%3$s tương ứng với giá trị trong cặp thẻ li đưa vào
+                    'item_spacing'         => 'preserve',
+                    'depth'                => 2,// cho phép menu hiện 2 cấp nếu bằng 0 thì hiện tất cả các cấp bằng 1 thì chỉ hiện menu cha
+                    'walker'               => '',
+                    'theme_location'       => 'main_menu',
+                );
+                wp_nav_menu( $args );
+            }
+            ?>
+                
+                <!--
                 <nav class="nav-link">
                     <ul>
                         <li>
@@ -98,8 +137,35 @@ $upload_dir = wp_upload_dir();
                     </ul>
 
                 </nav>
+                -->
 
                 <!-- menu mobile -->
+                <?php
+                if(has_nav_menu('mobile_menu')){
+                    $args = array(
+                        'menu'                 => '',
+                        'container'            => 'nav',
+                        'container_class'      => 'menu-mobile',
+                        'container_id'         => 'menu-mobile',
+                        'container_aria_label' => '',
+                        'menu_class'           => '',
+                        'menu_id'              => '',
+                        'echo'                 => true,
+                        'fallback_cb'          => 'wp_page_menu',
+                        'before'               => '',
+                        'after'                => '',
+                        'link_before'          => '',
+                        'link_after'           => '',
+                        'items_wrap'           => '<ul>%3$s<hr/></ul>',//%3$s tương ứng với giá trị trong cặp thẻ li đưa vào
+                        'item_spacing'         => 'preserve',
+                        'depth'                => 1,// cho phép menu hiện 2 cấp nếu bằng 0 thì hiện tất cả các cấp bằng 1 thì chỉ hiện menu cha
+                        'walker'               => '',
+                        'theme_location'       => 'mobile_menu',
+                    );
+                    wp_nav_menu( $args );
+                }
+                ?>
+                <!--
                 <nav id="menu-mobile">
                     <ul>
                         <li>
@@ -135,6 +201,7 @@ $upload_dir = wp_upload_dir();
                     </ul>
 
                 </nav>
+                -->
             </div>
         </div>
     </header>

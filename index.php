@@ -12,7 +12,7 @@ get_header(); ?>
 
 <main class="homepage">
         <!--          Slider              -->
-        <div class="swiper-container linh-mobile-hiden">
+        <div class="swiper-container linh-mobile-hiden linh-space-for-top">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <img data-src="<?php echo $upload_dir['url']; ?>/homebg.png" alt="img-detail" class="swiper-lazy">
@@ -31,7 +31,7 @@ get_header(); ?>
 
         </div>
         <!--  -->
-        <div class="container linh-space-for-top">
+        <div class="container ">
             <div class="homepage__wrap flex-content">
                 <!--    Nội dung  trái    -->
                 <div class="homepage__left content-left">
@@ -40,6 +40,32 @@ get_header(); ?>
                         <h2 class="title">
                             danh mục sản phẩm
                         </h2>
+                        <?php
+                        if(has_nav_menu('sidebar')){
+                            $args = array(
+                                'menu'                 => '',
+                                'container'            => 'nav',
+                                'container_class'      => 'menu-content',
+                                'container_id'         => 'menu-content',
+                                'container_aria_label' => '',
+                                'menu_class'           => '',
+                                'menu_id'              => '',
+                                'echo'                 => true,
+                                'fallback_cb'          => 'wp_page_menu',
+                                'before'               => '',
+                                'after'                => '',
+                                'link_before'          => '',
+                                'link_after'           => '',
+                                'items_wrap'           => '<ul>%3$s<hr/></ul>',//%3$s tương ứng với giá trị trong cặp thẻ li đưa vào
+                                'item_spacing'         => 'preserve',
+                                'depth'                => 2,// cho phép menu hiện 2 cấp nếu bằng 0 thì hiện tất cả các cấp bằng 1 thì chỉ hiện menu cha
+                                'walker'               => '',
+                                'theme_location'       => 'sidebar',
+                            );
+                            wp_nav_menu( $args );
+                        }
+                        ?>
+                        <!--
                         <div class="menu-content" id="menu-content">
                             <a href=""><i class="demo-icon icon-right-dir"></i> Máy nén khí không dầu, giảm âm polo</a>
                             <a href=""><i class="demo-icon icon-right-dir"></i> Máy nén khí đầu tiên polo </a>
@@ -48,6 +74,7 @@ get_header(); ?>
                             <a href=""><i class="demo-icon icon-right-dir"></i> bình tích khí polo</a>
                             <a href=""><i class="demo-icon icon-right-dir"></i> phụ kiện máy nén khí polo</a>
                         </div>
+                        -->
                     </aside>
 
                     <!-- Hỗ trợ trục tuyến -->
@@ -198,7 +225,7 @@ get_header(); ?>
                 </div>
 
                 <!--    Nội dung  phải      -->
-                <div class="homepage__right content-right">
+                <div class="homepage__right content-right ">
 
                     <h2 class="main-title">máy nén khí polo - máy nén khí chất lượng cao - bảo hành chính hãng</h2>
                     <!-- sản phẩm mới -->

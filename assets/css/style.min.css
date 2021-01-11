@@ -169,6 +169,10 @@ table {
     background-color: #f0f0f0
 }
 
+.menu-content li {
+    padding: 10px;
+}
+
 .homepage__left .menu .menu-content>a {
     display: flex;
     padding: 20px
@@ -542,14 +546,14 @@ strong {
 }
 
 .main-title {
-    font-size: 25px;
+    font-size: 20px;
     font-family: UTM;
     line-height: normal;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
     color: red;
-    margin: 70px 0;
+    margin: 40px 0;
     text-align: center
 }
 
@@ -1836,14 +1840,14 @@ body {
 
 .header #contact .phone-number {
     background-color: #003471;
-    font-size: 30px;
+    font-size: 15px;
     font-family: UTM;
     line-height: normal;
     color: #fff;
     text-transform: none;
     font-weight: bold;
     word-spacing: 10px;
-    height: 50px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center
@@ -1965,7 +1969,64 @@ body {
     align-items: center
 }
 
-.header .nav-link>ul,
+
+/* linh menu */
+
+.header .nav-link>ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.header .nav-link>ul li {
+    padding: 0 10px;
+    position: relative;
+}
+
+.header .nav-link>ul li a {
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    font-size: 17px;
+    font-family: RM;
+    line-height: normal;
+    color: #fff;
+    text-transform: uppercase;
+    position: relative
+}
+
+.header .nav-link>ul li>ul {
+    display: none;
+}
+
+.header .nav-link>ul li:hover>ul {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    left: -10px;
+    top: 58px;
+    background-color: #003471;
+}
+
+.header .nav-link>ul li>ul li {
+    width: 300px;
+    border: 2px solid #BA8239;
+}
+
+.header .nav-link>ul li a {
+    text-align: left;
+}
+
+.header .nav-link>ul li a:hover {
+    width: 100%;
+    left: 0
+}
+
+
+/* end linh menu */
+
+
+/* .header .nav-link>ul,
 .header #menu-mobile>ul {
     display: flex;
     justify-content: space-between;
@@ -2065,9 +2126,9 @@ body {
 .header #menu-mobile .dropdown-menu .dropdown-content a:hover {
     border: 2px solid #feef96;
     opacity: 0.8
-}
+} */
 
-.header #menu-mobile {
+.header .menu-mobile {
     display: none
 }
 
@@ -2179,7 +2240,13 @@ body {
         flex-direction: column
     }
     .header .nav #menu-mobile>ul li {
-        padding: 10px 0
+        padding: 10px 0;
+    }
+    .header .nav #menu-mobile>ul li a {
+        font-size: 20px;
+        /* font-weight: bold; */
+        color: #fff;
+        font-family: RM;
     }
 }
 
@@ -2314,15 +2381,28 @@ body {
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
     /* linh */
+    #menu-mobile {}
+    #menu-mobile ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    #menu-mobile ul li {
+        padding-left: 20px !important;
+    }
+    #menu-mobile ul li a {
+        padding: 0 !important;
+    }
     .header .container .header__wrap {
         border-bottom: 2px solid #003471;
         background-color: #fff;
     }
-    .linh-mobile-hiden {
-        display: none;
-    }
     .linh-space-for-top {
-        margin-top: 100px;
+        margin-top: 60px;
+    }
+    .main-title {
+        font-size: 15px;
+        margin-top: 0;
     }
     /* end linh */
     .footer__mid-wrap {
@@ -2414,11 +2494,11 @@ body {
         padding: 10px;
         font-size: 16px
     }
-    .homepage .homepage__wrap .homepage__left .menu .menu-content {
+    .menu-content {
         padding: 10px;
         font-size: 16px
     }
-    .homepage .homepage__wrap .homepage__left .menu .menu-content>a {
+    .menu-content ul li {
         padding: 10px
     }
     .homepage .homepage__wrap .homepage__left .service-center>h2 {

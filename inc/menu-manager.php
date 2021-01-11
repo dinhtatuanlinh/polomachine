@@ -4,12 +4,12 @@ add_action('init', 'dttl_theme_menu');
 function dttl_theme_menu(){
     register_nav_menus(
         array(
-            'main_menu' => __('main menu','Streetwear'),
-            'mobile_menu' => __('mobile menu','Streetwear'),
-            'menu_1' => __('menu 1','Streetwear'),
-            'menu_2' => __('menu 2','Streetwear'),
-            'menu_3' => __('menu 3','Streetwear'),
-            'menu_4' => __('menu 4','Streetwear')
+            'main_menu' => __('main menu','polomachine'),
+            'mobile_menu' => __('mobile menu','polomachine'),
+            'sidebar' => __('sidebar','polomachine'),
+            // 'menu_2' => __('menu 2','polomachine'),
+            // 'menu_3' => __('menu 3','polomachine'),
+            // 'menu_4' => __('menu 4','polomachine')
         )
     );
 }
