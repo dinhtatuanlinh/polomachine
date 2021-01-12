@@ -19,6 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+	echo '<pre>';
+	echo 'abc';
+	print_r($related_products);
+	echo '</pre>';
 if ( $related_products ) : ?>
 
 	<section class="related products">

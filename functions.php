@@ -10,7 +10,7 @@ define('POLOMACHINE_THEME_URL_IMG', get_template_directory_uri() . '/img');
 // -----------------
 // 10. add some action hooks
 // -----------------
-
+// add_action('linh_related_products', 'woocommerce_output_related_products', 5);// content-single-product.php
 // add_action('linh_rate', 'woocommerce_template_loop_rating', 5);// index.php
 // add_action('linh_addtocart', 'woocommerce_template_loop_add_to_cart', 5);// index.php
 // add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_price', 20 );// woocomerce/content-product.php

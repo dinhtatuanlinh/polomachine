@@ -79,7 +79,7 @@ if ( post_password_required() ) {
 					<div><?php echo $product->get_short_description(); ?></div>
 				</div>
 				<div class="product-text__btn">
-					<a href="tel:0828039666">Liên hệ 0828.039.666 để mua sản phẩm</a>
+					<a href="tel:0828039666">Liên hệ 0828.039.666</a>
 				</div>
 			</div>
 		</div>
@@ -98,72 +98,48 @@ if ( post_password_required() ) {
 						<img src="<?php echo $upload_dir['url']; ?>/text-banner.png" alt="">
 					</div>
 					<div class="special-products__wrap">
+					<?php
+					$product_categories = $product->get_category_ids();
+					
+					$slug = array();
+					for($i = 0; $i < count($product_categories); $i++){
+						$cat_obj = get_term($product_categories[$i], 'product_cat');
+						array_push($slug, $cat_obj->slug);
+					}
+					$args = array(
+						'category' => $slug,
+						'orderby' => 'date',  
+						'order' => 'DESC'
+					);
+					$related_products = wc_get_products( $args );
+
+						// echo '<pre>';
+						// echo 'abc';
+						// print_r($related_products);
+						// echo '</pre>';
+						if(!empty($related_products)){
+							foreach($related_products as $related_product){
+								$related_product = $related_product->get_data();
+
+					?>
 						<div class="special-products__card card-infor">
-							<a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="img-detail" class="lazyload"></a>
+							<a href="<?php echo get_permalink($related_product['id']); ?>"> <img data-src="<?php  echo get_the_post_thumbnail_url($related_product['id']); ?>" alt="img-detail" class="lazyload"></a>
 
 							<div class="text">
-								<a href="">
-									<h4 class="product-name">Máy nén khí không dầu  </h4>
+								<a href="<?php get_permalink($related_product['id']); ?>">
+									<h4 class="product-name"><?php echo get_the_title($related_product['id']); ?></h4>
 								</a>
 
-								<span class="price">12.800.000</span>
+								<div class="product-text__btn">
+									<a href="tel:0828039666" style="color: #fff;">Liên hệ 0828.039.666</a>
+								</div>
 							</div>
 						</div>
-						<div class="special-products__card card-infor">
-							<a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/red1.png" alt="img-detail" class="lazyload"></a>
-
-							<div class="text">
-								<a href="">
-									<h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-								</a>
-
-								<span class="price">11.500.000</span>
-							</div>
-						</div>
-						<div class="special-products__card card-infor">
-							<a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="img-detail" class="lazyload"></a>
-
-							<div class="text">
-								<a href="">
-									<h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-								</a>
-
-								<span class="price">9.500.000</span>
-							</div>
-						</div>
-						<div class="special-products__card card-infor">
-							<a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="img-detail" class="lazyload"></a>
-
-							<div class="text">
-								<a href="">
-									<h4 class="product-name">Máy nén khí không dầu  </h4>
-								</a>
-
-								<span class="price">Liên hệ</span>
-							</div>
-						</div>
-						<div class="special-products__card card-infor">
-							<a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/red1.png" alt="img-detail" class="lazyload"></a>
-
-							<div class="text">
-								<a href="">
-									<h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-								</a>
-
-								<span class="price">Liên hệ</span>
-							</div>
-						</div>
-						<div class="special-products__card card-infor">
-							<a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="img-detail" class="lazyload"></a>
-
-							<div class="text">
-								<a href="">
-									<h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-								</a>
-
-								<span class="price">Liên hệ</span>
-							</div>
-						</div>
+						<?php
+							}
+						}
+						wp_reset_postdata();// reset lại đối tương wp_query
+						?>
 					</div>
 				</div>
 			</div>

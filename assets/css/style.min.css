@@ -2673,6 +2673,29 @@ body {
     padding: 20px 30px;
 }
 
+
+/* linh */
+
+.product-text__btn {
+    text-align: center;
+    width: 80%;
+    background-color: #be1612;
+    font-size: 15px;
+    font-family: RB;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 0 auto;
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4)
+}
+
+.product-text__btn a {
+    color: #fff !important;
+    padding: 15px 10px;
+}
+
+
+/* end linh */
+
 .product-detail .product-detail__right .product__infor .product-text .product-text__btn span {
     text-transform: capitalize;
 }
