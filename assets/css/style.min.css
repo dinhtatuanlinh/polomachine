@@ -2612,7 +2612,7 @@ body {
     position: relative
 }
 
-.product-detail .product-detail__right .product__infor .product-text h2 {
+.product-detail .product-detail__right .product__infor .product-text h1 {
     font-size: 32px;
     font-family: RB;
     line-height: normal;
@@ -2663,18 +2663,25 @@ body {
 
 .product-detail .product-detail__right .product__infor .product-text .product-text__btn a {
     text-align: center;
-    width: 50%;
+    width: 100%;
     background-color: #be1612;
-    font-size: 24px;
+    font-size: 20px;
     font-family: RB;
     line-height: normal;
     color: #fff;
     text-transform: uppercase;
     padding: 20px 30px;
-    margin-left: 10%
 }
 
-.product-detail .product-detail__right .product-detail__content .--top h3 {
+.product-detail .product-detail__right .product__infor .product-text .product-text__btn span {
+    text-transform: capitalize;
+}
+
+.product-detail .product-detail__right .product__infor .product-text .product-text__btn p {
+    color: red;
+}
+
+.product-detail .product-detail__right .product-detail__content .--top span {
     margin: 40px 0;
     background-color: #003471;
     font-size: 24px;
@@ -2682,7 +2689,8 @@ body {
     line-height: normal;
     color: #fff;
     text-transform: uppercase;
-    padding: 5px 20px
+    padding: 5px 20px;
+    display: block;
 }
 
 .product-detail .product-detail__right .product-detail__content .--top ol {

@@ -31,9 +31,11 @@ define('POLOMACHINE_THEME_URL_IMG', get_template_directory_uri() . '/img');
 // remove_action( 'woocommerce_before_shop_loop' , 'woocommerce_result_count', 20);// woocommerce/archive-product.php
 // remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 ); // woocommerce/content-product.php
 // remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );// woocommerce/archive-product.php
-// remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
-// remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-// remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 // // ----------------------------------
 // 8. định nghĩa add woocommerce support to the theme
 // ----------------------------
@@ -54,9 +56,9 @@ require_once POLOMACHINE_THEME_INC_DIR . '/support-functions.php';
 // ----------------------------
 // 6. quản lý customizer
 // ----------------------------
-// require_once POLOMACHINE_THEME_INC_DIR . '/customizer-manager.php';
-// global $CustomizeVal;// khai báo biến $DDNCustomize để có thể sử dụng ở mọi nơi trong website
-// $CustomizeVal = new dttl_Theme_Customizer_Manager();
+require_once POLOMACHINE_THEME_INC_DIR . '/customizer-manager.php';
+global $CustomizeVal;// khai báo biến $DDNCustomize để có thể sử dụng ở mọi nơi trong website
+$CustomizeVal = new dttl_Theme_Customizer_Manager();
 
 
 // ----------------------------

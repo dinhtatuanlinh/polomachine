@@ -3,11 +3,12 @@ class dttl_Theme_Customizer_Manager{
     private $_theme_mods = array();
     public function __construct(){
         $options = array(
-            'theme-elements' => false,
-            'about' => false,
-            'social-links' => true,
+            // 'theme-elements' => false,
+            // 'about' => false,
+            // 'social-links' => true,
             'background' => true,
-            'logo' => true
+            // 'logo' => true,
+
         );
         $this->_theme_mods = get_theme_mods();// truyền dữ liệu từ theme mod vào biến $_theme_mods để sử dụng
         // echo '<pre>';
@@ -20,24 +21,24 @@ class dttl_Theme_Customizer_Manager{
         if (isset($options['logo']) == true) $this->logo();
     }
     public function theme_elements(){
-        require_once STREETWEAR_THEME_CUSTOMIZER_DIR . '/theme-elements-section.php';
+        require_once POLOMACHINE_THEME_CUSTOMIZER_DIR . '/theme-elements-section.php';
         new taife_Theme_Elements_Section($this->_theme_mods);
         // biến $this->_theme_mods được truyền vào lớp DDN_Theme_Elements_Section để có thể lấy dữ liệu của biến này bên trong lớp
     }
     public function about_section(){
-        require_once STREETWEAR_THEME_CUSTOMIZER_DIR . '/about-section.php';
+        require_once POLOMACHINE_THEME_CUSTOMIZER_DIR . '/about-section.php';
         new About_Section($this->_theme_mods);
     }
     public function social_links(){
-        require_once STREETWEAR_THEME_CUSTOMIZER_DIR . '/social-links-section.php';
+        require_once POLOMACHINE_THEME_CUSTOMIZER_DIR . '/social-links-section.php';
         new Social_Links_Section($this->_theme_mods);
     }
     public function background(){
-        require_once STREETWEAR_THEME_CUSTOMIZER_DIR . '/background-section.php';
+        require_once POLOMACHINE_THEME_CUSTOMIZER_DIR . '/background-section.php';
         new Background_Section($this->_theme_mods);
     }
     public function logo(){
-        require_once STREETWEAR_THEME_CUSTOMIZER_DIR . '/logo-section.php';
+        require_once POLOMACHINE_THEME_CUSTOMIZER_DIR . '/logo-section.php';
         new Logo_Section($this->_theme_mods);
     }
     // để update giá trị cho một option_name nào đó trong bảng option ta sử dụng
