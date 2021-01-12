@@ -24,50 +24,40 @@ get_sidebar();
                         </div>
                         <div class="new-products__slider">
                             <div class="swiper-wrapper">
+                            <?php
+                            $args = array(
+                                'post_type'           => 'product',
+                                'post_status'         => 'publish',
+                                'ignore_sticky_posts' => 1,
+                                'orderby'             => 'date',
+                                'posts_per_page'        => '12',
+                                'order'               => 'desc',
+                                
+                            );
+                            // The query
+                            $query = new WP_Query( $args);
+                            if ( $query->have_posts() ) :
+                                while ($query->have_posts()) : $query->the_post();//phải dùng vòng lặp while để lấy ra đúng bài được chọn
+                                $product = wc_get_product( get_the_ID() ); /* get the WC_Product Object */
+                            ?>
                                 <div class="swiper-slide card-infor">
-                                    <a href=""><img data-src="<?php echo $upload_dir['url']; ?>/red1.png" alt="img-detail" class="lazyload"></a>
+                                    <a href="<?php the_permalink(); ?>"><img data-src="<?php  echo get_the_post_thumbnail_url(); ?>" alt="img-detail" class="lazyload"></a>
 
                                     <div class="text">
-                                        <a href="">
-                                            <h4 class="product-name">Máy nén khí đầu liền 2.5HP</h4>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <h4 class="product-name"><?php the_title(); ?></h4>
                                         </a>
 
-                                        <span class="price">12.800.000 đ</span>
+                                        <div class="product-text__btn">
+                                            <a href="tel:0828039666" style="color: #fff;">Liên hệ 0828.039.666</a>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide card-infor">
-                                    <a href=""><img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="img-detail" class="lazyload"></a>
-
-                                    <div class="text">
-                                        <a href="">
-                                            <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                        </a>
-
-                                        <span class="price">Liên hệ</span>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide card-infor">
-                                    <a href=""><img data-src="<?php echo $upload_dir['url']; ?>/red1.png" alt="img-detail" class="lazyload"></a>
-
-                                    <div class="text">
-                                        <a href="">
-                                            <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                        </a>
-
-                                        <span class="price">12.800.000 đ</span>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide card-infor">
-                                    <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="img-detail" class="lazyload"></a>
-
-                                    <div class="text">
-                                        <a href="">
-                                            <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                        </a>
-
-                                        <span class="price">Liên hệ</span>
-                                    </div>
-                                </div>
+                            <?php
+                                endwhile;
+                            endif;
+                            wp_reset_postdata();// reset lại đối tương wp_query
+                            ?>
                             </div>
                             <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>
@@ -82,138 +72,44 @@ get_sidebar();
                             <img src="<?php echo $upload_dir['url']; ?>/text-banner.png" alt="">
                         </div>
                         <div class="special-products__wrap">
+                        <?php
+                            $tax_query[] = array(
+                                'taxonomy' => 'product_visibility',
+                                'field'    => 'name',
+                                'terms'    => 'featured',
+                                'operator' => 'IN', // or 'NOT IN' to exclude feature products
+                            );
+                            $args = array(
+                                'post_type'           => 'product',
+                                'post_status'         => 'publish',
+                                'ignore_sticky_posts' => 1,
+                                'orderby'             => 'date',
+                                'order'               => 'desc',
+                                'post__in'            => wc_get_featured_product_ids(),
+                            );
+                            // The query
+                            $query = new WP_Query( $args);
+                            if ( $query->have_posts() ) :
+                                while ($query->have_posts()) : $query->the_post();//phải dùng vòng lặp while để lấy ra đúng bài được chọn
+                                $product = wc_get_product( get_the_ID() ); /* get the WC_Product Object */
+                            ?>
                             <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="img-detail" class="lazyload"></a>
-
+                                <a href="<?php the_permalink(); ?>"> <img data-src="<?php  echo get_the_post_thumbnail_url(); ?>" alt="special" class="lazyload"></a>
                                 <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu </h4>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <h4 class="product-name"><?php the_title(); ?></h4>
                                     </a>
 
-                                    <span class="price">12.800.000</span>
+                                    <div class="product-text__btn">
+                                        <a href="tel:0828039666" style="color: #fff;">Liên hệ 0828.039.666</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/red1.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                    </a>
-
-                                    <span class="price">11.500.000</span>
-                                </div>
-                            </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                    </a>
-
-                                    <span class="price">9.500.000</span>
-                                </div>
-                            </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu </h4>
-                                    </a>
-
-                                    <span class="price">Liên hệ</span>
-                                </div>
-                            </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/red1.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                    </a>
-
-                                    <span class="price">Liên hệ</span>
-                                </div>
-                            </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                    </a>
-
-                                    <span class="price">Liên hệ</span>
-                                </div>
-                            </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/red2.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu </h4>
-                                    </a>
-
-                                    <span class="price">16.000.0000 đ</span>
-                                </div>
-                            </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/red3.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                    </a>
-
-                                    <span class="price">18.000.000 đ</span>
-                                </div>
-                            </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/dau-nen-1.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                    </a>
-
-                                    <span class="price">36.000.000 đ</span>
-                                </div>
-                            </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/dau-nen-2.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu </h4>
-                                    </a>
-
-                                    <span class="price">Liên hệ</span>
-                                </div>
-                            </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/dau-nen-1.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                    </a>
-
-                                    <span class="price">Liên hệ</span>
-                                </div>
-                            </div>
-                            <div class="special-products__card card-infor">
-                                <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue3.png" alt="img-detail" class="lazyload"></a>
-
-                                <div class="text">
-                                    <a href="">
-                                        <h4 class="product-name">Máy nén khí không dầu 150 lít 6hp Polo </h4>
-                                    </a>
-
-                                    <span class="price">Liên hệ</span>
-                                </div>
-                            </div>
+                            <?php
+                                endwhile;
+                            endif;
+                            wp_reset_postdata();// reset lại đối tương wp_query
+                            ?>
                         </div>
                     </div>
                 </div>
