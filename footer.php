@@ -17,7 +17,7 @@
                         <p><b>Địa chỉ:</b><span>77 ngõ 467 Đường Lĩnh Nam, P. Lĩnh Nam, Q. Hoàng Mai, Tp. Hà Nội</span>
                         </p>
                         <p><b>Điện thoại:</b><span>0828.039.666 </span></p>
-                        <p><b>Email:</b><span>letuan614@gmail.com</span></p>
+                        <p><b>Email:</b><span><a href="mailto:letuan614@gmail.com" style="color: #fff;">letuan614@gmail.com</a></span></p>
                     </div>
                     <div class="working-time">
                         <p><b>Thời gian làm việc:</b></p>

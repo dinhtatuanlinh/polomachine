@@ -79,122 +79,46 @@
                             Sản phẩm nổi bật
                         </h2>
                         <div class="special-content">
-
+                            <?php
+                            $tax_query[] = array(
+                                'taxonomy' => 'product_visibility',
+                                'field'    => 'name',
+                                'terms'    => 'featured',
+                                'operator' => 'IN', // or 'NOT IN' to exclude feature products
+                            );
+                            $args = array(
+                                'post_type'           => 'product',
+                                'post_status'         => 'publish',
+                                'ignore_sticky_posts' => 1,
+                                'orderby'             => 'date',
+                                'order'               => 'desc',
+                                'post__in'            => wc_get_featured_product_ids(),
+                            );
+                            // The query
+                            $query = new WP_Query( $args);
+                            if ( $query->have_posts() ) :
+                                while ($query->have_posts()) : $query->the_post();//phải dùng vòng lặp while để lấy ra đúng bài được chọn
+                                $product = wc_get_product( get_the_ID() ); /* get the WC_Product Object */
+                            ?>
                             <div class="special-card">
                                 <div class="special-card__img">
-                                    <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="special" class="lazyload"></a>
+                                    <a href="<?php the_permalink(); ?>"> <img data-src="<?php  echo get_the_post_thumbnail_url(); ?>" alt="special" class="lazyload"></a>
 
                                 </div>
                                 <div class="special-card__text">
-                                    <a href="">
-                                        <h3>Máy nén khí dây đai 1HP</h3>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <h3><?php the_title(); ?></h3>
                                     </a>
-                                    <span class="price">12.800.000 đ</span>
+                                    <div class="product-text__btn">
+                                        <a href="tel:0828039666" style="color: #fff;">Liên hệ 0828.039.666</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="special-card">
-                                <div class="special-card__img">
-                                    <a href=""> <img data-src="<?php echo $upload_dir['url']; ?>/red1.png" alt="special" class="lazyload"></a>
-
-                                </div>
-                                <div class="special-card__text">
-                                    <a href="">
-                                        <h3>Máy nén khí dây đai 1HP</h3>
-                                    </a>
-                                    <span class="price">Liên hệ</span>
-                                </div>
-                            </div>
-                            <div class="special-card">
-                                <div class="special-card__img">
-                                    <a href=""><img data-src="<?php echo $upload_dir['url']; ?>/red2.png" alt="special" class="lazyload"></a>
-
-                                </div>
-                                <div class="special-card__text">
-                                    <a href="">
-                                        <h3>Máy nén khí dây đai 1HP</h3>
-                                    </a>
-
-                                    <span class="price">12.800.000 đ</span>
-                                </div>
-                            </div>
-                            <div class="special-card">
-                                <div class="special-card__img">
-                                    <a href=""><img data-src="<?php echo $upload_dir['url']; ?>/green.png" alt="special" class="lazyload"></a>
-
-                                </div>
-                                <div class="special-card__text">
-                                    <a href="">
-                                        <h3>Máy nén khí dây đai 1HP</h3>
-                                    </a>
-
-                                    <span class="price">Liên hệ</span>
-                                </div>
-                            </div>
-                            <div class="special-card">
-                                <div class="special-card__img">
-                                    <a href=""><img data-src="<?php echo $upload_dir['url']; ?>/red2.png" alt="special" class="lazyload"></a>
-
-                                </div>
-                                <div class="special-card__text">
-                                    <a href="">
-                                        <h3>Máy nén khí dây đai 1HP</h3>
-                                    </a>
-
-                                    <span class="price">12.800.000 đ</span>
-                                </div>
-                            </div>
-                            <div class="special-card">
-                                <div class="special-card__img">
-                                    <a href=""><img data-src="<?php echo $upload_dir['url']; ?>/blue1.png" alt="special" class="lazyload"></a>
-
-                                </div>
-                                <div class="special-card__text">
-                                    <a href="">
-                                        <h3>Máy nén khí dây đai 1HP</h3>
-                                    </a>
-
-                                    <span class="price">12.800.000 đ</span>
-                                </div>
-                            </div>
-                            <div class="special-card">
-                                <div class="special-card__img">
-                                    <a href=""><img data-src="<?php echo $upload_dir['url']; ?>/red1.png" alt="special" class="lazyload"></a>
-
-                                </div>
-                                <div class="special-card__text">
-                                    <a href="">
-                                        <h3>Máy nén khí dây đai 1HP</h3>
-                                    </a>
-
-                                    <span class="price">12.800.000 đ</span>
-                                </div>
-                            </div>
-                            <div class="special-card">
-                                <div class="special-card__img">
-                                    <a href=""><img data-src="<?php echo $upload_dir['url']; ?>/yellow.png" alt="special" class="lazyload"></a>
-
-                                </div>
-                                <div class="special-card__text">
-                                    <a href="">
-                                        <h3>Máy nén khí dây đai 1HP</h3>
-                                    </a>
-
-                                    <span class="price">Liên hệ</span>
-                                </div>
-                            </div>
-                            <div class="special-card">
-                                <div class="special-card__img">
-                                    <a href=""><img data-src="<?php echo $upload_dir['url']; ?>/red2.png" alt="special" class="lazyload"></a>
-
-                                </div>
-                                <div class="special-card__text">
-                                    <a href="">
-                                        <h3>Máy nén khí dây đai 1HP</h3>
-                                    </a>
-
-                                    <span class="price">Liên hệ</span>
-                                </div>
-                            </div>
+                            <?php
+                                endwhile;
+                            endif;
+                            wp_reset_postdata();// reset lại đối tương wp_query
+                            ?>
 
                         </div>
                     </aside>
