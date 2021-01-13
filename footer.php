@@ -27,7 +27,7 @@
                         <p><b>Liên hệ:</b></p>
                         <div class="icons">
                             <a href="https://www.facebook.com/M%C3%A1y-N%C3%A9n-Kh%C3%AD-Polo-308039189642797/"><i class="demo-icon icon-facebook"></i></a>
-                            <a href="https://zalo.me/0828039666"><img src="<?php echo $upload_dir['url']; ?>/aa.png" alt="zalo"></a>
+                            <a href="https://zalo.me/0828039666"><img src="<?php echo $upload_dir['url']; ?>/Zalo2.svg" alt="zalo"></a>
                             <a href="mailto:letuan614@gmail.com"><i class="demo-icon icon-mail"></i></a>
                         </div>
 

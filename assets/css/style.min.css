@@ -2677,6 +2677,28 @@ body {
 
 /* linh */
 
+.linh-cat-top-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 0;
+}
+
+.linh-cat-top-wrapper p {
+    padding-right: 10px;
+}
+
+.bg-text h1 {
+    font-size: 24px;
+    font-family: RB;
+    line-height: normal;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.icons img {
+    color: #fff;
+}
+
 .product-text__btn {
     text-align: center;
     width: 80%;

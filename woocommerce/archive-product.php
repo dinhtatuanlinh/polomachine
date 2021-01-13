@@ -18,7 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
-
+$upload_dir = wp_upload_dir();
 /**
  * Hook: woocommerce_before_main_content.
  *
@@ -29,10 +29,21 @@ get_header( 'shop' );
 do_action( 'woocommerce_before_main_content' );
 
 ?>
-<header class="woocommerce-products-header">
-	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-	<?php endif; ?>
+<div class="product-all__right content-right">
+<h2 class="main-title">máy nén khí polo - máy nén khí chất lượng cao - bảo hành chính hãng</h2>
+	<div class="row">
+
+		<div class="col-lg-12">
+			<!-- sản phẩm liên quan -->
+			<div class="special-products">
+				<div class="title flex b-left bg-text">
+				<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+					<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+				<?php endif; ?>
+					
+					<img src="<?php echo $upload_dir['url']; ?>/text-banner.png" alt="">
+				</div>
+						
 
 	<?php
 	/**
@@ -41,12 +52,14 @@ do_action( 'woocommerce_before_main_content' );
 	 * @hooked woocommerce_taxonomy_archive_description - 10
 	 * @hooked woocommerce_product_archive_description - 10
 	 */
-	do_action( 'woocommerce_archive_description' );
+	// do_action( 'woocommerce_archive_description' );
 	?>
-</header>
+
 <?php
 if ( woocommerce_product_loop() ) {
-
+	?>
+	<div class="linh-cat-top-wrapper">
+	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop.
 	 *
@@ -55,7 +68,10 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_catalog_ordering - 30
 	 */
 	do_action( 'woocommerce_before_shop_loop' );
-
+	?>
+	</div>
+	<div class="special-products__wrap">	
+	<?php
 	woocommerce_product_loop_start();
 
 	if ( wc_get_loop_prop( 'total' ) ) {
@@ -87,7 +103,12 @@ if ( woocommerce_product_loop() ) {
 	 */
 	do_action( 'woocommerce_no_products_found' );
 }
-
+?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php
 /**
  * Hook: woocommerce_after_main_content.
  *

@@ -10,6 +10,16 @@ define('POLOMACHINE_THEME_URL_IMG', get_template_directory_uri() . '/img');
 // -----------------
 // 10. add some action hooks
 // -----------------
+if ( ! function_exists( 'linh_woocommerce_template_loop_product_title' ) ) {
+
+	/**
+	 * Show the product title in the product loop. By default this is an H2.
+	 */
+	function linh_woocommerce_template_loop_product_title() {
+		echo '<h4 class="product-name ' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</h4>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+}
+add_action('woocommerce_shop_loop_item_title', 'linh_woocommerce_template_loop_product_title', 10); // content-product.php
 // add_action('linh_related_products', 'woocommerce_output_related_products', 5);// content-single-product.php
 // add_action('linh_rate', 'woocommerce_template_loop_rating', 5);// index.php
 // add_action('linh_addtocart', 'woocommerce_template_loop_add_to_cart', 5);// index.php
@@ -27,15 +37,16 @@ define('POLOMACHINE_THEME_URL_IMG', get_template_directory_uri() . '/img');
 // ---------------------------------
 // 9. remove một số thành phần ko cần thiết trong trang single product
 // ----------------------------------
-// remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 ); //content-product.php
 // remove_action( 'woocommerce_before_shop_loop' , 'woocommerce_result_count', 20);// woocommerce/archive-product.php
 // remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 ); // woocommerce/content-product.php
-// remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );// woocommerce/archive-product.php
+remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );// woocommerce/archive-product.php
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 15 );
 // // ----------------------------------
 // 8. định nghĩa add woocommerce support to the theme
 // ----------------------------

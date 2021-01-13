@@ -18,20 +18,54 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product;
-
+$link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
 // Ensure visibility.
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class( '', $product ); ?>>
+<div class="special-products__card card-infor" <?php wc_product_class( '', $product ); ?>>
+	<a href="<?php echo esc_url( $link ); ?>"> 
+		<?php
+		/**
+		 * Hook: woocommerce_before_shop_loop_item_title.
+		 *
+		 * @hooked woocommerce_show_product_loop_sale_flash - 10
+		 * @hooked woocommerce_template_loop_product_thumbnail - 10
+		 */
+		do_action( 'woocommerce_before_shop_loop_item_title' );
+		?>
+		<!-- <img data-src="img/blue1.png" alt="img-detail" class="lazyload"> -->
+	</a>
+
+	<div class="text">
+		<a href="<?php echo esc_url( $link ); ?>">
+		<?php
+			/**
+			 * Hook: woocommerce_shop_loop_item_title.
+			 *
+			 * @hooked woocommerce_template_loop_product_title - 10 XXXX
+			 * @hooked linh_woocommerce_template_loop_product_title - 10
+			 */
+			do_action( 'woocommerce_shop_loop_item_title' );
+		?>	
+			<!-- <h4 class="product-name">Máy nén khí không dầu </h4> -->
+		</a>
+
+		<div class="product-text__btn">
+                                        <a href="tel:0828039666" style="color: #fff;">Liên hệ 0828.039.666</a>
+                                    </div>
+	</div>
+</div>
+
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
 	 *
-	 * @hooked woocommerce_template_loop_product_link_open - 10
+	 * @hooked woocommerce_template_loop_product_link_open - 10 XXXX
+	
 	 */
-	do_action( 'woocommerce_before_shop_loop_item' );
+	// do_action( 'woocommerce_before_shop_loop_item' );
 
 	/**
 	 * Hook: woocommerce_before_shop_loop_item_title.
@@ -39,14 +73,15 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_show_product_loop_sale_flash - 10
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
-	do_action( 'woocommerce_before_shop_loop_item_title' );
+	// do_action( 'woocommerce_before_shop_loop_item_title' );
 
 	/**
 	 * Hook: woocommerce_shop_loop_item_title.
 	 *
-	 * @hooked woocommerce_template_loop_product_title - 10
+	 * @hooked woocommerce_template_loop_product_title - 10 XXXX
+	 * @hooked linh_woocommerce_template_loop_product_title - 10
 	 */
-	do_action( 'woocommerce_shop_loop_item_title' );
+	// do_action( 'woocommerce_shop_loop_item_title' );
 
 	/**
 	 * Hook: woocommerce_after_shop_loop_item_title.
@@ -54,7 +89,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_rating - 5
 	 * @hooked woocommerce_template_loop_price - 10
 	 */
-	do_action( 'woocommerce_after_shop_loop_item_title' );
+	// do_action( 'woocommerce_after_shop_loop_item_title' );
 
 	/**
 	 * Hook: woocommerce_after_shop_loop_item.
@@ -62,6 +97,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_link_close - 5
 	 * @hooked woocommerce_template_loop_add_to_cart - 10
 	 */
-	do_action( 'woocommerce_after_shop_loop_item' );
+	// do_action( 'woocommerce_after_shop_loop_item' );
 	?>
-</li>
+

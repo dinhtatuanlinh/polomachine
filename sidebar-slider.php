@@ -12,15 +12,16 @@
         <div class="swiper-container linh-mobile-hiden linh-space-for-top">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img data-src="<?php echo $background_data['img_1']; ?>" alt="img-detail" class="swiper-lazy dttlimg_1">
+                    <a href=""><img data-src="<?php echo $background_data['img_1']; ?>" alt="img-detail" class="swiper-lazy dttlimg_1"></a>
+                
                     <div class="swiper-lazy-preloader"></div>
                 </div>
                 <div class="swiper-slide">
-                    <img data-src="<?php echo $background_data['img_2']; ?>" alt="img-detail" class="swiper-lazy dttlimg_2">
+                    <a href=""><img data-src="<?php echo $background_data['img_2']; ?>" alt="img-detail" class="swiper-lazy dttlimg_2"></a>
                     <div class="swiper-lazy-preloader"></div>
                 </div>
                 <div class="swiper-slide">
-                    <img data-src="<?php echo $background_data['img_3']; ?>" alt="img-detail" class="swiper-lazy dttlimg_3">
+                    <a href=""><img data-src="<?php echo $background_data['img_3']; ?>" alt="img-detail" class="swiper-lazy dttlimg_3"></a>
                     <div class="swiper-lazy-preloader"></div>
                 </div>
             </div>
